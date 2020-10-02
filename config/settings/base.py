@@ -268,5 +268,6 @@ ACCOUNT_ADAPTER = "feedz.users.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "feedz.users.adapters.SocialAccountAdapter"
 
 
-# Your stuff...
+# Application settings
 # ------------------------------------------------------------------------------
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
