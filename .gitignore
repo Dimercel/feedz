@@ -264,11 +264,15 @@ Session.vim
 # Auto-generated tag files
 tags
 
+# Sass
+.sass-cache
+
 ### Project template
 
 feedz/media/
 feedz/static/gentelella
 feedz/static/css/project.css
+feedz/static/css/project.css.map
 
 .pytest_cache/
 
