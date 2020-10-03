@@ -277,3 +277,5 @@ feedz/static/css/project.css.map
 .pytest_cache/
 
 local.env
+
+package-lock.json
