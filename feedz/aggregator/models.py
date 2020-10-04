@@ -1,3 +1,22 @@
 from django.db import models
 
-# Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True, null=False)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=250, null=False)
+    url = models.URLField(max_length=500, null=False)
+    favorite = models.BooleanField(default=False)
+    published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Channel(models.Model):
+    url = models.URLField(max_length=500, unique=True, null=False)
+    name = models.CharField(max_length=50, null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_seen = models.DateTimeField()
+    last_sync = models.DateTimeField()
+    post_limit = models.PositiveSmallIntegerField(default=100)
