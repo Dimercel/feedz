@@ -36,26 +36,32 @@ $red: #b94a48;
     color: $red;
 }
 
-.main_container .blank {
-    background-color: #F7F7F7;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: block;
-    padding: 0px;
-    top: 0px;
-    left: 0px;
+.main_container {
+    .blank {
+        background-color: #F7F7F7;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: block;
+        padding: 0px;
+        top: 0px;
+        left: 0px;
 
-    .form-container {
-        margin-top: 100px;
-    }
+        .form-container {
+            margin-top: 100px;
+        }
 
-    .nav_menu {
-        .logo {
-            font-weight: bold;
-            font-size: 24px;
-            color: #5e6974;
-            padding: 10px;
+        .nav_menu {
+            .logo {
+                font-weight: bold;
+                font-size: 24px;
+                color: #5e6974;
+                padding: 10px;
+            }
+        }
+
+        .login {
+            background-color: $white;
         }
     }
 }
