@@ -24,3 +24,13 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     channel = models.ForeignKey(Channel, null=True, on_delete=models.CASCADE)
+
+
+class Favorite(models.Model):
+    url = models.URLField(max_length=500, null=False)
+    title = models.CharField(max_length=250, null=False)
+    category_name = models.CharField(max_length=50, null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    channel = models.ForeignKey(Channel, null=True, on_delete=models.CASCADE)
