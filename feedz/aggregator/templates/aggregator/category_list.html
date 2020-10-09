@@ -1,0 +1,46 @@
+{% extends "blank.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Category list" %}{% endblock title %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="form-container">
+      <div class="x_panel">
+        <div class="x_title">
+          <h1>{% trans "Category list" %}</h1>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content crud-list">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Actions" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for category in category_list %}
+                <tr>
+                  <td>{{ category.name }}</td>
+                  <td class="actions">
+                    <a href="/categories/1/edit">
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/categories/1">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>            </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

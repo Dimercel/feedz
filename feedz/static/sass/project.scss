@@ -64,4 +64,10 @@ $red: #b94a48;
             background-color: $white;
         }
     }
+
+    .crud-list {
+        .actions span {
+            margin: 0 8px;
+        }
+    }
 }
