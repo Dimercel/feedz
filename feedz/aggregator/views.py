@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
 
 from .models import Category
 
@@ -13,3 +14,9 @@ class CategoryListView(TemplateView):
         return render(request, self.template_name, context={
             'category_list': all_categories,
         })
+
+
+class CategoryCreate(CreateView):
+    model = Category
+    fields = ['name']
+    template_name = 'aggregator/category_new.html'

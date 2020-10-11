@@ -1,8 +1,19 @@
 from django.db import models
+from django.urls import reverse
+from django.utils.translation import gettext as _
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50, unique=True, null=False)
+    name = models.CharField(max_length=50,
+                            unique=True,
+                            null=False,
+                            verbose_name=_('name'))
+
+    def get_absolute_url(self):
+        return reverse('category-list')
+
+    class Meta:
+        verbose_name = _('Category')
 
 
 class Channel(models.Model):

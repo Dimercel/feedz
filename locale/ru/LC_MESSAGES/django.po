@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 19:10+0300\n"
+"POT-Creation-Date: 2020-10-11 12:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: feedz/aggregator/models.py:10
+msgid "name"
+msgstr "Имя"
+
+#: feedz/aggregator/models.py:16
+#, fuzzy
+#| msgid "Category list"
+msgid "Category"
+msgstr "Категория"
 
 #: feedz/aggregator/templates/aggregator/category_list.html:4
 #: feedz/aggregator/templates/aggregator/category_list.html:12
@@ -32,6 +42,15 @@ msgstr "Название"
 #: feedz/aggregator/templates/aggregator/category_list.html:22
 msgid "Actions"
 msgstr "Действия"
+
+#: feedz/aggregator/templates/aggregator/category_new.html:6
+#: feedz/aggregator/templates/aggregator/category_new.html:14
+msgid "New category"
+msgstr "Новая категория"
+
+#: feedz/aggregator/templates/aggregator/category_new.html:25
+msgid "Create"
+msgstr "Создать"
 
 #: feedz/templates/account/account_inactive.html:5
 #: feedz/templates/account/account_inactive.html:6
@@ -169,14 +188,14 @@ msgstr ""
 #: feedz/templates/account/password_reset_from_key_done.html:4
 #: feedz/templates/account/password_reset_from_key_done.html:5
 msgid "Change Password"
-msgstr ""
+msgstr "Изменить пароль"
 
 #: feedz/templates/account/password_reset.html:7
 #: feedz/templates/account/password_reset.html:8
 #: feedz/templates/account/password_reset_done.html:6
 #: feedz/templates/account/password_reset_done.html:7
 msgid "Password Reset"
-msgstr ""
+msgstr "Сбросить пароль"
 
 #: feedz/templates/account/password_reset.html:15
 msgid ""
