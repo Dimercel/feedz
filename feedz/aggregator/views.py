@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .models import Category
 
@@ -20,3 +20,9 @@ class CategoryCreate(CreateView):
     model = Category
     fields = ['name']
     template_name = 'aggregator/category_new.html'
+
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    fields = ['name']
+    template_name = 'aggregator/category_update.html'

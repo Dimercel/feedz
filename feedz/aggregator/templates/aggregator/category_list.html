@@ -27,7 +27,7 @@
                 <tr>
                   <td>{{ category.name }}</td>
                   <td class="actions">
-                    <a href="/categories/1/edit">
+                    <a href="{% url 'category-update' category.pk %}">
                       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
                     <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/categories/1">

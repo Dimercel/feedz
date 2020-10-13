@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 19:40+0300\n"
+"POT-Creation-Date: 2020-10-13 20:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: feedz/aggregator/models.py:10
 msgid "name"
-msgstr "Имя"
+msgstr "название"
 
 #: feedz/aggregator/models.py:16
 #, fuzzy
@@ -44,7 +44,6 @@ msgid "Actions"
 msgstr "Действия"
 
 #: feedz/aggregator/templates/aggregator/category_list.html:41
-#| msgid "New category"
 msgid "New category..."
 msgstr "Новая категория..."
 
@@ -56,6 +55,15 @@ msgstr "Новая категория"
 #: feedz/aggregator/templates/aggregator/category_new.html:25
 msgid "Create"
 msgstr "Создать"
+
+#: feedz/aggregator/templates/aggregator/category_update.html:6
+#: feedz/aggregator/templates/aggregator/category_update.html:14
+msgid "Update category"
+msgstr "Обновить категорию"
+
+#: feedz/aggregator/templates/aggregator/category_update.html:25
+msgid "Update"
+msgstr "Изменить"
 
 #: feedz/templates/account/account_inactive.html:5
 #: feedz/templates/account/account_inactive.html:6
