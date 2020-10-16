@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 20:07+0300\n"
+"POT-Creation-Date: 2020-10-16 21:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,7 @@ msgid "New category"
 msgstr "Новая категория"
 
 #: feedz/aggregator/templates/aggregator/category_new.html:25
+#: feedz/aggregator/templates/aggregator/channel_new.html:25
 msgid "Create"
 msgstr "Создать"
 
@@ -64,6 +65,11 @@ msgstr "Обновить категорию"
 #: feedz/aggregator/templates/aggregator/category_update.html:25
 msgid "Update"
 msgstr "Изменить"
+
+#: feedz/aggregator/templates/aggregator/channel_new.html:6
+#: feedz/aggregator/templates/aggregator/channel_new.html:14
+msgid "New rss channel"
+msgstr "Новый rss-канал"
 
 #: feedz/templates/account/account_inactive.html:5
 #: feedz/templates/account/account_inactive.html:6
