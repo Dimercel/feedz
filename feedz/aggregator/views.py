@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
+from .forms import CreateChannelForm
 from .models import Category, Channel
 
 
@@ -30,5 +31,5 @@ class CategoryUpdate(UpdateView):
 
 class ChannelCreate(CreateView):
     model = Channel
-    fields = ['url', 'name', 'post_limit', 'category']
+    form_class = CreateChannelForm
     template_name = 'aggregator/channel_new.html'
