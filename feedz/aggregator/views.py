@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -21,6 +21,16 @@ class CategoryCreate(CreateView):
     model = Category
     fields = ['name']
     template_name = 'aggregator/category_new.html'
+
+    def post(self, request, *args, **kwargs):
+        new_category = Category(
+            name=request.POST['name'],
+            user=request.user
+        )
+
+        new_category.save()
+
+        return redirect('category-list')
 
 
 class CategoryUpdate(UpdateView):
