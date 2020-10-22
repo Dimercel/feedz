@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
+
+User = get_user_model()
 
 
 class Category(models.Model):
@@ -8,6 +11,8 @@ class Category(models.Model):
                             unique=True,
                             null=False,
                             verbose_name=_('name'))
+
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('category-list')
