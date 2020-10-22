@@ -10,7 +10,7 @@ class CategoryListView(TemplateView):
     template_name = 'aggregator/category_list.html'
 
     def get(self, request):
-        all_categories = Category.objects.all()
+        all_categories = Category.objects.filter(user=request.user)
 
         return render(request, self.template_name, context={
             'category_list': all_categories,
