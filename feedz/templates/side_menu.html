@@ -16,7 +16,13 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Anthony Mutisya</h2>
+                <h2>
+                  {% if user.is_authenticated %}
+                    {{ user.get_username }}
+                  {% else %}
+                    new user.
+                  {% endif %}
+                </h2>
             </div>
         </div>
 
