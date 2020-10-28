@@ -14,7 +14,8 @@ class Category(models.Model):
 
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
+    @classmethod
+    def get_absolute_url(cls):
         return reverse('category-list')
 
     def __str__(self):
