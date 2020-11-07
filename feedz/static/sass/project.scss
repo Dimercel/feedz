@@ -71,3 +71,41 @@ $red: #b94a48;
         }
     }
 }
+
+.feedz {
+    .home {
+        .feed-navigator {
+
+            .cat_toggle {
+                cursor: pointer;
+            }
+
+            .channel {
+                .x_title {
+                    h2 {
+                        font-size: 14px;
+                    }
+
+                }
+
+                .widget_tally_box {
+                    width: 400px;
+                }
+
+                .widget_tally {
+                    .property {
+                        width: 50%;
+                        float: left;
+                        text-align: left;
+                    }
+
+                    .value {
+                        width: 50%;
+                        float: left;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
