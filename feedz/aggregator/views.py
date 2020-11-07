@@ -63,3 +63,11 @@ class ChannelCreate(CreateView):
             return HttpResponse(f'Error in form: {form.errors}')
 
         return redirect('channel-new')
+
+
+def all_categories(request):
+    categories = Category.objects.filter(user=request.user)
+
+    return render(request, 'pages/home.html', context={
+        'cat_info': [(c.name, c.channel_set.all()) for c in categories],
+    })
