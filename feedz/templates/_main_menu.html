@@ -1,0 +1,55 @@
+<div class="left_col scroll-view">
+  <div class="navbar nav_title" style="border: 0;">
+    <a href="/" class="site_title" data-turbolinks="false">
+      <i class="fa fa-rss"></i>
+      <span>FeedZ<span>
+    </a>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <br />
+
+  <!-- sidebar menu -->
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <ul class="nav side-menu">
+        {% for cat_name, models in nav_items %}
+          <li>
+            <a><i class="fa fa-rss"></i>{{ cat_name }} <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu"">
+              {% for item in models %}
+                <li>
+                  <a data-turbolinks="false" href="<%= subscribe_path(item) %>">
+                    {{ item.name }}
+                    <span class="badge badge-primary pull-right">
+                      0
+                    </span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <!-- /sidebar menu -->
+
+  <!-- /menu footer buttons -->
+  <div class="sidebar-footer hidden-small">
+    <a href="{% url 'channel-new' %}" title="Добавить подписку">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+    <a href="<%= favorites_path %>" title="Избранное">
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    </a>
+    <a href="{% url 'category-list' %}" title="Редактировать категории">
+      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    </a>
+    <a title="Logout" href="login.html">
+      <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- /menu footer buttons -->
+</div>

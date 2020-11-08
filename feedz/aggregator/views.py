@@ -67,7 +67,8 @@ class ChannelCreate(CreateView):
 
 def all_categories(request):
     categories = Category.objects.filter(user=request.user)
-
+    cat_with_channels = [(c.name, c.channel_set.all()) for c in categories]
     return render(request, 'pages/home.html', context={
-        'cat_info': [(c.name, c.channel_set.all()) for c in categories],
+        'cat_info': cat_with_channels,
+        'nav_items': cat_with_channels,
     })
