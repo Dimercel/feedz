@@ -14,14 +14,14 @@
   <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section">
       <ul class="nav side-menu">
-        {% for cat_name, models in nav_items %}
+        {% for cat_name, channels in nav_items %}
           <li>
             <a><i class="fa fa-rss"></i>{{ cat_name }} <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu"">
-              {% for item in models %}
+              {% for channel_item in channels %}
                 <li>
                   <a href="#channel-view">
-                    {{ item.name }}
+                    {{ channel_item.name }}
                     <span class="badge badge-primary pull-right">
                       0
                     </span>
