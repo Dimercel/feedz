@@ -1,6 +1,6 @@
 <div class="left_col scroll-view">
   <div class="navbar nav_title" style="border: 0;">
-    <a href="/" class="site_title" data-turbolinks="false">
+    <a href="/" class="site_title">
       <i class="fa fa-rss"></i>
       <span>FeedZ<span>
     </a>
@@ -20,7 +20,7 @@
             <ul class="nav child_menu"">
               {% for item in models %}
                 <li>
-                  <a data-turbolinks="false" href="<%= subscribe_path(item) %>">
+                  <a href="#channel-view">
                     {{ item.name }}
                     <span class="badge badge-primary pull-right">
                       0
