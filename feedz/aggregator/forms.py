@@ -25,9 +25,6 @@ class CreateChannelForm(ModelForm):
 
 
 class UpdateChannelForm(CreateChannelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all(),
-                                      empty_label=None)
-
     class Meta:
         model = Channel
         fields = '__all__'
