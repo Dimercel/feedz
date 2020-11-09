@@ -1,5 +1,6 @@
 import requests
 from django import forms
+from django.conf import settings
 from django.core.validators import ValidationError
 from django.forms import ModelForm
 
@@ -16,7 +17,9 @@ class CreateChannelForm(ModelForm):
 
     def clean_url(self):
         data = self.cleaned_data
-        resp = requests.get(data.get('url'))
+        resp = requests.get(data.get('url'), headers={
+            'user-agent': settings.BOT_USER_AGENT
+        })
 
         if resp.status_code != requests.codes.ok:
             raise ValidationError(f"Url return status {resp.status_code}")

@@ -274,3 +274,8 @@ SOCIALACCOUNT_ADAPTER = "feedz.users.adapters.SocialAccountAdapter"
 # Application settings
 # ------------------------------------------------------------------------------
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+# App specific settings
+# ------------------------------------------------------------------------------
+BOT_USER_AGENT = env('BOT_USER_AGENT')
