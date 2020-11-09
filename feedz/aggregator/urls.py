@@ -19,4 +19,8 @@ urlpatterns = [
     path('channel/new/',
          login_required(views.ChannelCreate.as_view()),
          name='channel-new'),
+
+    path('channel/<int:pk>/update/',
+         login_required(views.ChannelUpdate.as_view()),
+         name='channel-update'),
 ]

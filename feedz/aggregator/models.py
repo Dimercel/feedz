@@ -35,6 +35,9 @@ class Channel(models.Model):
 
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('channel-update', args=[str(self.id)])
+
 
 class Post(models.Model):
     title = models.CharField(max_length=250, null=False)

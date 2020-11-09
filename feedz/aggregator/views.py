@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
-from .forms import CreateChannelForm
+from .forms import CreateChannelForm, UpdateChannelForm
 from .models import Category, Channel
 
 
@@ -63,6 +63,12 @@ class ChannelCreate(CreateView):
             return HttpResponse(f'Error in form: {form.errors}')
 
         return redirect('channel-new')
+
+
+class ChannelUpdate(UpdateView):
+    model = Channel
+    form_class = UpdateChannelForm
+    template_name = 'aggregator/channel_update.html'
 
 
 def all_categories(request):
