@@ -9,7 +9,6 @@ User = get_user_model()
 class Category(models.Model):
     name = models.CharField(max_length=50,
                             unique=True,
-                            null=False,
                             verbose_name=_('name'))
 
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
@@ -26,8 +25,8 @@ class Category(models.Model):
 
 
 class Channel(models.Model):
-    url = models.URLField(max_length=500, unique=True, null=False)
-    name = models.CharField(max_length=50, null=False)
+    url = models.URLField(max_length=500, unique=True)
+    name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     last_seen = models.DateTimeField()
     last_sync = models.DateTimeField()
@@ -40,8 +39,8 @@ class Channel(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=250, null=False)
-    url = models.URLField(max_length=500, null=False)
+    title = models.CharField(max_length=250)
+    url = models.URLField(max_length=500)
     favorite = models.BooleanField(default=False)
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -50,9 +49,9 @@ class Post(models.Model):
 
 
 class Favorite(models.Model):
-    url = models.URLField(max_length=500, null=False)
-    title = models.CharField(max_length=250, null=False)
-    category_name = models.CharField(max_length=50, null=False)
+    url = models.URLField(max_length=500)
+    title = models.CharField(max_length=250)
+    category_name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
