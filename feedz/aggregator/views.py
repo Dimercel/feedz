@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils import timezone
@@ -8,18 +10,18 @@ from .forms import CreateChannelForm, UpdateChannelForm
 from .models import Category, Channel
 
 
-class CategoryListView(TemplateView):
+class CategoryListView(TemplateView, LoginRequiredMixin):
     template_name = 'aggregator/category_list.html'
 
     def get(self, request, *args, **kwargs):
-        all_categories = Category.objects.filter(user=request.user)
+        own_categories = Category.objects.filter(user=request.user)
 
         return render(request, self.template_name, context={
-            'category_list': all_categories,
+            'category_list': own_categories,
         })
 
 
-class CategoryCreate(CreateView):
+class CategoryCreate(CreateView, LoginRequiredMixin):
     model = Category
     fields = ['name']
     template_name = 'aggregator/category_new.html'
@@ -35,13 +37,13 @@ class CategoryCreate(CreateView):
         return redirect('category-list')
 
 
-class CategoryUpdate(UpdateView):
+class CategoryUpdate(UpdateView, LoginRequiredMixin):
     model = Category
     fields = ['name']
     template_name = 'aggregator/category_update.html'
 
 
-class ChannelCreate(CreateView):
+class ChannelCreate(CreateView, LoginRequiredMixin):
     model = Channel
     form_class = CreateChannelForm
     template_name = 'aggregator/channel_new.html'
@@ -65,12 +67,13 @@ class ChannelCreate(CreateView):
         return redirect('channel-new')
 
 
-class ChannelUpdate(UpdateView):
+class ChannelUpdate(UpdateView, LoginRequiredMixin):
     model = Channel
     form_class = UpdateChannelForm
     template_name = 'aggregator/channel_update.html'
 
 
+@login_required()
 def all_categories(request):
     categories = Category.objects.filter(user=request.user)
     cat_with_channels = [(c.name, c.channel_set.all()) for c in categories]
