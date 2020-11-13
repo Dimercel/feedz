@@ -20,6 +20,10 @@ urlpatterns = [
          login_required(views.ChannelCreate.as_view()),
          name='channel-new'),
 
+    path('channel/<int:pk>/',
+         login_required(views.ChannelView.as_view()),
+         name='channel-view'),
+
     path('channel/<int:pk>/update/',
          login_required(views.ChannelUpdate.as_view()),
          name='channel-update'),

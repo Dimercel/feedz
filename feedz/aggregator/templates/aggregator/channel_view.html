@@ -1,0 +1,50 @@
+{% extends "side_menu.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ channel.name }}{% endblock title %}
+
+{% block content %}
+
+<div class="col-md-12 subscribe">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>
+        {{ channel.category.name }}
+        <i class="fa fa-angle-right"></i>
+        {{ channel.name }}
+        <span class="channel-url">({{ channel.url }})</span>
+        <span class="last-sync-info">
+          {{ channel.last_sync }}
+        </span>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a href="{% url 'channel-update' channel.pk %}"><i class="fa fa-edit"></i></a> </li>
+        <li><a href="#delete"><i class="fa fa-remove"></i></a> </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="xcontent post-list">
+
+      {% for item in posts %}
+        <div class="row post">
+          <div class="col-md-10">
+            <span class="glyphicon glyphicon-bookmark favorite" post_id="{{ item.id }}"></span>
+            <span class="glyphicon glyphicon-ok check" date="date"></span>
+            <a class="title" href="{{ item.url }}" target="_blank">
+              {{ item.title }}
+            </a>
+          </div>
+          <div class="col-md-2">
+            <p class="date pull-right">date</p>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary mark-all">Пометить как прочитанное</button>
+</div>
+
+{% endblock %}

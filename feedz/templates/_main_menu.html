@@ -20,7 +20,7 @@
             <ul class="nav child_menu"">
               {% for channel_item in channels %}
                 <li>
-                  <a href="#channel-view">
+                  <a href="{% url 'channel-view' channel_item.id %}">
                     {{ channel_item.name }}
                     <span class="badge badge-primary pull-right">
                       0

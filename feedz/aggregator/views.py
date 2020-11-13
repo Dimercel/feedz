@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
@@ -67,6 +67,23 @@ class ChannelCreate(CreateView, LoginRequiredMixin):
         return redirect('channel-new')
 
 
+class ChannelView(TemplateView, LoginRequiredMixin):
+    model = Channel
+    template_name = 'aggregator/channel_view.html'
+
+    def get(self, request, pk, *args, **kwargs):
+        model = get_object_or_404(Channel, pk=pk)
+
+        categories = Category.objects.filter(user=request.user)
+        nav_items = [(c.name, c.channel_set.all()) for c in categories]
+
+        return render(request, self.template_name, context={
+            'channel': model,
+            'nav_items': nav_items,
+            'posts': model.post_set.all()
+        })
+
+
 class ChannelUpdate(UpdateView, LoginRequiredMixin):
     model = Channel
     form_class = UpdateChannelForm
@@ -77,6 +94,7 @@ class ChannelUpdate(UpdateView, LoginRequiredMixin):
 def all_categories(request):
     categories = Category.objects.filter(user=request.user)
     cat_with_channels = [(c.name, c.channel_set.all()) for c in categories]
+
     return render(request, 'pages/home.html', context={
         'cat_info': cat_with_channels,
         'nav_items': cat_with_channels,

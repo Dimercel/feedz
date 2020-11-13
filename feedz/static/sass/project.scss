@@ -108,4 +108,64 @@ $red: #b94a48;
             }
         }
     }
+
+    .subscribe {
+        .channel-url {
+            font-size: 14px;
+        }
+
+        .last-sync-info {
+            font-size: 14px;
+        }
+
+        .post-list {
+            .post {
+                .title {
+                    font-size: 13px;
+                    font-family: sans-serif;
+                    font-weight: bold;
+                    margin: 4px 0 4px 40px;
+                }
+
+                .favorite {
+                    cursor: pointer;
+                    margin: 4px 8px;
+                }
+
+                .active {
+                    color: #1ABB9C;
+                }
+
+                .date {
+                    margin: 4px 8px;
+                }
+
+                .check {
+                    margin: 4px 8px;
+                    cursor: pointer;
+                }
+
+                &:hover {
+                    background-color: #EEE;
+                }
+            }
+
+            .disable {
+                color: #dadada;
+
+                a {
+                    color: #dadada;
+
+                    &:hover {
+                        color: #dadada;
+                    }
+                }
+
+                .active {
+                    color: #dadada;
+                }
+            }
+        }
+    }
+
 }
