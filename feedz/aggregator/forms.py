@@ -3,6 +3,7 @@ from django import forms
 from django.conf import settings
 from django.core.validators import ValidationError
 from django.forms import ModelForm
+from django.utils.translation import gettext as _
 
 from .models import Category, Channel
 
@@ -22,9 +23,13 @@ class CreateChannelForm(ModelForm):
         })
 
         if resp.status_code != requests.codes.ok:
-            raise ValidationError(f"Url return status {resp.status_code}")
+            raise ValidationError(
+                _("Url return status %(status)s"),
+                code='bad_request',
+                params={'status': resp.status_code}
+            )
 
-        return data['url']
+        return data
 
 
 class UpdateChannelForm(CreateChannelForm):
