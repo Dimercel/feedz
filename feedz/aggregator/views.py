@@ -80,7 +80,7 @@ class ChannelView(TemplateView, LoginRequiredMixin):
         return render(request, self.template_name, context={
             'channel': model,
             'nav_items': nav_items,
-            'posts': model.post_set.all()
+            'posts': model.post_set.all().order_by('-published')
         })
 
 

@@ -37,7 +37,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <p class="date pull-right">date</p>
+            <p class="date pull-right">{{ item.published|date:'d.m.Y (H:i)' }}</p>
           </div>
         </div>
       {% endfor %}
