@@ -1,4 +1,5 @@
 from datetime import datetime
+from time import mktime
 
 import feedparser
 
@@ -15,7 +16,7 @@ def sync_feed(channel):
             title=item.title,
             url=item.link,
             favorite=False,
-            published=True,  # FIXME
+            published=datetime.fromtimestamp(mktime(item.updated_parsed)),
             channel=channel,
         )
 

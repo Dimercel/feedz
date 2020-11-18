@@ -7,8 +7,7 @@ User = get_user_model()
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50,
-                            unique=True,
+    name = models.CharField(max_length=50, unique=True,
                             verbose_name=_('name'))
 
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
@@ -42,7 +41,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     url = models.URLField(max_length=500)
     favorite = models.BooleanField(default=False)
-    published = models.BooleanField(default=False)
+    published = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     channel = models.ForeignKey(Channel, null=True, on_delete=models.CASCADE)

@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=250)),
                 ('url', models.URLField(max_length=500)),
                 ('favorite', models.BooleanField(default=False)),
-                ('published', models.BooleanField(default=False)),
+                ('published', models.DateTimeField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
         ),
