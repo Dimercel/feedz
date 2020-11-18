@@ -29,7 +29,7 @@ class CreateChannelForm(ModelForm):
                 params={'status': resp.status_code}
             )
 
-        return data
+        return data.get('url')
 
 
 class UpdateChannelForm(CreateChannelForm):
