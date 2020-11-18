@@ -15,7 +15,7 @@
         {{ channel.name }}
         <span class="channel-url">({{ channel.url }})</span>
         <span class="last-sync-info">
-          {{ channel.last_sync }}
+          {{ channel.last_sync|date:'d.m.Y (H:i)' }}
         </span>
       </h2>
       <ul class="nav navbar-right panel_toolbox">
