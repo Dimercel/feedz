@@ -36,6 +36,9 @@ class Channel(models.Model):
     def get_absolute_url(self):
         return reverse('channel-update', args=[str(self.id)])
 
+    def never_seen_posts(self):
+        return Post.objects.filter(channel=self, published__gt=self.last_seen)
+
 
 class Post(models.Model):
     title = models.CharField(max_length=250)

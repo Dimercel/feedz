@@ -81,6 +81,10 @@
             {% endfor %}
         {% endif %}
 
+        <div style="display:none">
+          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        </div>
+
         {% block layout %}
         {% endblock %}
 
@@ -99,7 +103,7 @@
       <!-- Your stuff: Third-party javascript libraries go here -->
 
       <!-- place project specific Javascript in this file -->
-      <script src="{% static 'js/project.js' %}"></script>
+      <script src="{% static 'js/feedz.js' %}"></script>
       <script src="{% static 'gentelella/build/js/custom.min.js' %}"></script>
     {% endblock javascript %}
 

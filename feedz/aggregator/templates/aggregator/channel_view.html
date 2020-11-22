@@ -1,6 +1,11 @@
 {% extends "side_menu.html" %}
 
 {% load i18n %}
+{% load static %}
+
+{% block custom_js %}
+<script src="{% static 'aggregator/js/channel.js' %}"></script>
+{% endblock %}
 
 {% block title %}{{ channel.name }}{% endblock title %}
 
@@ -31,7 +36,7 @@
         <div class="row post">
           <div class="col-md-10">
             <span class="glyphicon glyphicon-bookmark favorite" post_id="{{ item.id }}"></span>
-            <span class="glyphicon glyphicon-ok check" date="date"></span>
+            <span class="glyphicon glyphicon-ok check" date="{{ item.published|date:'d-m-Y H:i:s' }}"></span>
             <a class="title" href="{{ item.url }}" target="_blank">
               {{ item.title }}
             </a>

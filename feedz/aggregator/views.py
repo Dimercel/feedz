@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
@@ -83,8 +85,22 @@ class ChannelView(TemplateView, LoginRequiredMixin):
         return render(request, self.template_name, context={
             'channel': model,
             'nav_items': nav_items,
-            'posts': model.post_set.all().order_by('-published')
+            'posts': model.never_seen_posts().order_by('-published')[:model.post_limit]
         })
+
+    def post(self, request, pk, *args, **kwargs):
+        if 'date' in request.POST:
+            model = get_object_or_404(Channel, pk=pk)
+
+            DATE_FORMAT = '%d-%m-%Y %H:%M:%S'
+            try:
+                model.last_seen = datetime.strptime(request.POST['date'], DATE_FORMAT)
+            except ValueError:
+                return HttpResponse(model.last_seen.strftime(DATE_FORMAT))
+
+            model.save()
+
+        return HttpResponse(model.last_seen.strftime(DATE_FORMAT))
 
 
 class ChannelUpdate(UpdateView, LoginRequiredMixin):
