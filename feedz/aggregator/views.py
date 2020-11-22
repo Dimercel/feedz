@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
+from .feed import sync_feed
 from .forms import CreateChannelForm, UpdateChannelForm
 from .models import Category, Channel
 
@@ -53,7 +54,7 @@ class ChannelCreate(CreateView, LoginRequiredMixin):
 
         if form.is_valid():
             data = form.cleaned_data
-            Channel.objects.create(
+            new_channel = Channel.objects.create(
                 url=data.get('url'),
                 name=data.get('name'),
                 post_limit=data.get('post_limit'),
@@ -61,6 +62,8 @@ class ChannelCreate(CreateView, LoginRequiredMixin):
                 last_seen=timezone.now(),
                 last_sync=timezone.now()
             )
+
+            sync_feed(new_channel)
         else:
             return HttpResponse(f'Error in form: {form.errors}')
 

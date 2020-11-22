@@ -9,11 +9,11 @@ from .models import Post
 def sync_feed(channel):
     d = feedparser.parse(channel.url)
     for item in d.entries:
-        if Post.objects.filter(title=item.title, channel=channel).exists():
+        if Post.objects.filter(title=item.title[:250], channel=channel).exists():
             break
 
         Post.objects.create(
-            title=item.title,
+            title=item.title[:250],
             url=item.link,
             favorite=False,
             published=datetime.fromtimestamp(mktime(item.updated_parsed)),
