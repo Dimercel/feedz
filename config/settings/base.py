@@ -1,6 +1,7 @@
 """
 Base settings to build other settings files upon.
 """
+from datetime import timedelta
 from pathlib import Path
 
 import environ
@@ -279,3 +280,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # App specific settings
 # ------------------------------------------------------------------------------
 BOT_USER_AGENT = env('BOT_USER_AGENT')
+MIN_SYNC_TIME_DELTA = timedelta(hours=1)

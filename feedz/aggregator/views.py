@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
@@ -81,6 +82,10 @@ class ChannelView(TemplateView, LoginRequiredMixin):
 
         categories = Category.objects.filter(user=request.user)
         nav_items = [(c.name, c.channel_set.all()) for c in categories]
+
+        sync_date = model.last_sync.replace(tzinfo=None)
+        if datetime.utcnow() - sync_date > settings.MIN_SYNC_TIME_DELTA:
+            sync_feed(model)
 
         return render(request, self.template_name, context={
             'channel': model,
