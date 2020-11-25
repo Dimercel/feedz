@@ -9,7 +9,7 @@ $(document).ready(function() {
             data: {date: date},
             success: function(last_seen) {
                 if (last_seen == date) {
-                    $(self).closest('.post').prevAll().addClass('disable');
+                    $(self).closest('.post').nextAll().addClass('disable');
                     $(self).closest('.post').addClass('disable');
                 }
             }
