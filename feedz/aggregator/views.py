@@ -83,8 +83,8 @@ class ChannelView(TemplateView, LoginRequiredMixin):
         categories = Category.objects.filter(user=request.user)
         nav_items = [(c.name, c.channel_set.all()) for c in categories]
 
-        sync_date = model.last_sync.replace(tzinfo=None)
-        if datetime.utcnow() - sync_date > settings.MIN_SYNC_TIME_DELTA:
+        sync_date = model.last_sync
+        if datetime.now(timezone.utc) - sync_date > settings.MIN_SYNC_TIME_DELTA:
             sync_feed(model)
 
         return render(request, self.template_name, context={
