@@ -30,8 +30,10 @@ def sync_feed(channel):
     channel.last_sync = datetime.now(timezone.utc)
     channel.save()
 
+    # Со временем посты накапливаются, мы должны удалять "старые" в
+    # соответствии с ограничением
     post_count = Post.objects.filter(channel=channel).count()
     if post_count > channel.post_limit:
-        to_delete = (Post.objects.all().order_by('created_at')
-                     [:post_count - channel.post_limit])
-        to_delete.delete()
+        beyound_limit = (Post.objects.filter(channel=channel).order_by('published')
+                         [:post_count - channel.post_limit])
+        beyound_limit.delete()
