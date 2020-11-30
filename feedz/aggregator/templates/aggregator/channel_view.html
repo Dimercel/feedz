@@ -38,7 +38,7 @@
             <span class="glyphicon glyphicon-bookmark favorite" post_id="{{ item.id }}"></span>
             <span class="glyphicon glyphicon-ok check" date="{{ item.published|date:'d-m-Y H:i:s' }}"></span>
             <a class="title" href="{{ item.url }}" target="_blank">
-              {{ item.title }}
+              {{ item.title|truncatechars:150 }}
             </a>
           </div>
           <div class="col-md-2">
