@@ -23,7 +23,7 @@
                   <a href="{% url 'channel-view' channel_item.id %}">
                     {{ channel_item.name }}
                     <span class="badge badge-primary pull-right">
-                      0
+                      {{ channel_item.never_seen_count }}
                     </span>
                   </a>
                 </li>

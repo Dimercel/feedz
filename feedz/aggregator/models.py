@@ -39,6 +39,9 @@ class Channel(models.Model):
     def never_seen_posts(self):
         return Post.objects.filter(channel=self, published__gt=self.last_seen)
 
+    def never_seen_count(self):
+        return self.never_seen_posts().count()
+
 
 class Post(models.Model):
     title = models.CharField(max_length=250)
