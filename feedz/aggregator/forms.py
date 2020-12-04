@@ -17,8 +17,8 @@ class CreateChannelForm(ModelForm):
         fields = ['url', 'name', 'post_limit', 'category']
 
     def clean_url(self):
-        data = self.cleaned_data
-        resp = requests.get(data.get('url'), headers={
+        url = self.cleaned_data.get('url')
+        resp = requests.get(url, headers={
             'user-agent': settings.BOT_USER_AGENT
         })
 
@@ -29,7 +29,7 @@ class CreateChannelForm(ModelForm):
                 params={'status': resp.status_code}
             )
 
-        return data.get('url')
+        return url
 
 
 class UpdateChannelForm(CreateChannelForm):

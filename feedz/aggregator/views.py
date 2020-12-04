@@ -68,7 +68,7 @@ class ChannelCreate(CreateView, LoginRequiredMixin):
 
             sync_feed(new_channel)
         else:
-            return HttpResponse(f'Error in form: {form.errors}')
+            return render(request, self.template_name, {'form': form})
 
         return redirect('channel-new')
 
