@@ -24,14 +24,15 @@ class Category(models.Model):
 
 
 class Channel(models.Model):
-    url = models.URLField(max_length=500, unique=True)
-    name = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    last_seen = models.DateTimeField()
-    last_sync = models.DateTimeField()
-    post_limit = models.PositiveSmallIntegerField(default=100)
+    url = models.URLField(max_length=500, unique=True, verbose_name=_('url'))
+    name = models.CharField(max_length=50, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created'))
+    last_seen = models.DateTimeField(verbose_name=_('last seen'))
+    last_sync = models.DateTimeField(verbose_name=_('last sync'))
+    post_limit = models.PositiveSmallIntegerField(default=100, verbose_name=_('posts limit'))
 
-    category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, null=True, verbose_name=_('category'),
+                                 on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('channel-update', args=[str(self.id)])
@@ -41,6 +42,10 @@ class Channel(models.Model):
 
     def never_seen_count(self):
         return self.never_seen_posts().count()
+
+    class Meta:
+        verbose_name = _('channel')
+        verbose_name_plural = _('channels')
 
 
 class Post(models.Model):

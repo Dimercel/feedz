@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 21:03+0300\n"
+"POT-Creation-Date: 2020-12-04 19:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,52 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: feedz/aggregator/models.py:10
+#: feedz/aggregator/forms.py:27
+#, python-format
+msgid "Url return status %(status)s"
+msgstr ""
+
+#: feedz/aggregator/models.py:11 feedz/aggregator/models.py:28
 msgid "name"
 msgstr "название"
 
-#: feedz/aggregator/models.py:16
+#: feedz/aggregator/models.py:23
 #, fuzzy
 #| msgid "Category list"
 msgid "Category"
 msgstr "Категория"
+
+#: feedz/aggregator/models.py:27
+msgid "url"
+msgstr "урл"
+
+#: feedz/aggregator/models.py:29
+msgid "created"
+msgstr "создан"
+
+#: feedz/aggregator/models.py:30
+msgid "last seen"
+msgstr "последний просмотр"
+
+#: feedz/aggregator/models.py:31
+msgid "last sync"
+msgstr "синхронизация"
+
+#: feedz/aggregator/models.py:32
+msgid "posts limit"
+msgstr "максимум постов"
+
+#: feedz/aggregator/models.py:34
+msgid "category"
+msgstr "категория"
+
+#: feedz/aggregator/models.py:47
+msgid "channel"
+msgstr "rss-канал"
+
+#: feedz/aggregator/models.py:48
+msgid "channels"
+msgstr "rss-каналы"
 
 #: feedz/aggregator/templates/aggregator/category_list.html:4
 #: feedz/aggregator/templates/aggregator/category_list.html:12
@@ -53,7 +90,7 @@ msgid "New category"
 msgstr "Новая категория"
 
 #: feedz/aggregator/templates/aggregator/category_new.html:25
-#: feedz/aggregator/templates/aggregator/channel_new.html:25
+#: feedz/aggregator/templates/aggregator/channel_new.html:24
 msgid "Create"
 msgstr "Создать"
 
@@ -63,12 +100,20 @@ msgid "Update category"
 msgstr "Обновить категорию"
 
 #: feedz/aggregator/templates/aggregator/category_update.html:25
+#: feedz/aggregator/templates/aggregator/channel_update.html:25
 msgid "Update"
 msgstr "Изменить"
 
 #: feedz/aggregator/templates/aggregator/channel_new.html:6
 #: feedz/aggregator/templates/aggregator/channel_new.html:14
 msgid "New rss channel"
+msgstr "Новый rss-канал"
+
+#: feedz/aggregator/templates/aggregator/channel_update.html:6
+#: feedz/aggregator/templates/aggregator/channel_update.html:14
+#, fuzzy
+#| msgid "New rss channel"
+msgid "Update rss channel"
 msgstr "Новый rss-канал"
 
 #: feedz/templates/account/account_inactive.html:5
@@ -323,6 +368,10 @@ msgstr ""
 
 #: feedz/templates/base.html:53
 msgid "My Profile"
+msgstr ""
+
+#: feedz/templates/pages/home.html:4 feedz/templates/pages/home.html:5
+msgid "Home"
 msgstr ""
 
 #: feedz/users/apps.py:7
