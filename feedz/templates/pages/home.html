@@ -28,12 +28,12 @@
           <div class="col-md-3 widget_tally_box">
             <div class="x_panel channel">
               <div class="x_title">
-                <a href="#view">
+                <a href="{% url 'channel-view' channel_item.id %}">
                   <h2>{{ channel_item.name }}</h2>
                 </a>
                 <ul class="nav navbar-right panel_toolbox">
                   <li>
-                    <a href="#view" role="button">
+                    <a href="{% url 'channel-view' channel_item.id %}" role="button">
                       <i class="fa fa-eye"></i>
                     </a>
                   </li>
