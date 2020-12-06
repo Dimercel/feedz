@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-04 20:07+0300\n"
+"POT-Creation-Date: 2020-12-06 21:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,6 +116,22 @@ msgstr "Новый rss-канал"
 msgid "Update rss channel"
 msgstr "Новый rss-канал"
 
+#: feedz/templates/_main_menu.html:42
+msgid "Add channel"
+msgstr "Добавить rss-канал"
+
+#: feedz/templates/_main_menu.html:45
+msgid "Favorite"
+msgstr "Избранное"
+
+#: feedz/templates/_main_menu.html:48
+msgid "Change categories"
+msgstr "Редактировать категории"
+
+#: feedz/templates/_main_menu.html:51
+msgid "Logout"
+msgstr "Выйти"
+
 #: feedz/templates/account/account_inactive.html:5
 #: feedz/templates/account/account_inactive.html:6
 msgid "Account Inactive"
@@ -207,7 +223,7 @@ msgid ""
 msgstr ""
 
 #: feedz/templates/account/login.html:7 feedz/templates/account/login.html:8
-#: feedz/templates/account/login.html:46 feedz/templates/base.html:66
+#: feedz/templates/account/login.html:46
 msgid "Sign In"
 msgstr ""
 
@@ -236,7 +252,7 @@ msgid "Forgot Password?"
 msgstr ""
 
 #: feedz/templates/account/logout.html:5 feedz/templates/account/logout.html:6
-#: feedz/templates/account/logout.html:23 feedz/templates/base.html:57
+#: feedz/templates/account/logout.html:23
 msgid "Sign Out"
 msgstr ""
 
@@ -318,7 +334,7 @@ msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
-#: feedz/templates/account/signup.html:21 feedz/templates/base.html:62
+#: feedz/templates/account/signup.html:21
 msgid "Sign Up"
 msgstr ""
 
@@ -366,13 +382,17 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: feedz/templates/base.html:53
-msgid "My Profile"
-msgstr ""
-
 #: feedz/templates/pages/home.html:4 feedz/templates/pages/home.html:5
 msgid "Home"
 msgstr ""
+
+#: feedz/templates/side_menu.html:26
+msgid "Profile"
+msgstr "Профиль"
+
+#: feedz/templates/side_menu.html:30
+msgid "Log Out"
+msgstr "Выход"
 
 #: feedz/users/apps.py:7
 msgid "Users"
