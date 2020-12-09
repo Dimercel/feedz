@@ -14,6 +14,12 @@ from .forms import CreateChannelForm, UpdateChannelForm
 from .models import Category, Channel
 
 
+def navigation_items(user):
+    categories = Category.objects.filter(user=user)
+
+    return [(c.name, c.channel_set.order_by('name')) for c in categories]
+
+
 class CategoryListView(TemplateView, LoginRequiredMixin):
     template_name = 'aggregator/category_list.html'
 
@@ -79,17 +85,13 @@ class ChannelView(TemplateView, LoginRequiredMixin):
 
     def get(self, request, pk, *args, **kwargs):
         model = get_object_or_404(Channel, pk=pk)
-
-        categories = Category.objects.filter(user=request.user)
-        nav_items = [(c.name, c.channel_set.all()) for c in categories]
-
         sync_date = model.last_sync
         if datetime.now(timezone.utc) - sync_date > settings.MIN_SYNC_TIME_DELTA:
             sync_feed(model)
 
         return render(request, self.template_name, context={
             'channel': model,
-            'nav_items': nav_items,
+            'nav_items': navigation_items(request.user),
             'posts': model.never_seen_posts().order_by('-published')[:model.post_limit]
         })
 
@@ -116,10 +118,9 @@ class ChannelUpdate(UpdateView, LoginRequiredMixin):
 
 @login_required()
 def all_categories(request):
-    categories = Category.objects.filter(user=request.user)
-    cat_with_channels = [(c.name, c.channel_set.all()) for c in categories]
+    nav_items = navigation_items(request.user)
 
     return render(request, 'pages/home.html', context={
-        'cat_info': cat_with_channels,
-        'nav_items': cat_with_channels,
+        'cat_info': nav_items,
+        'nav_items': nav_items
     })
