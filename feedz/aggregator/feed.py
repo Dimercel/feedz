@@ -34,6 +34,7 @@ def sync_feed(channel):
     # соответствии с ограничением
     post_count = Post.objects.filter(channel=channel).count()
     if post_count > channel.post_limit:
-        beyound_limit = (Post.objects.filter(channel=channel).order_by('published')
-                         [:post_count - channel.post_limit])
-        beyound_limit.delete()
+        Post.objects.filter(pk__in=Post.objects.filter(channel=channel)
+                            .order_by('published')
+                            .values_list('pk')
+                            [:post_count - channel.post_limit]).delete()
