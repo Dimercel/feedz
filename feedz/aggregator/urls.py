@@ -20,6 +20,10 @@ urlpatterns = [
          login_required(views.ChannelCreate.as_view()),
          name='channel-new'),
 
+    path('channel/<int:channel_id>/favorite/',
+         login_required(views.add_favorite),
+         name='add-favorite'),
+
     path('channel/<int:pk>/',
          login_required(views.ChannelView.as_view()),
          name='channel-view'),
@@ -27,4 +31,8 @@ urlpatterns = [
     path('channel/<int:pk>/update/',
          login_required(views.ChannelUpdate.as_view()),
          name='channel-update'),
+
+    path('favorite/',
+         login_required(views.FavoriteListView.as_view()),
+         name='favorite-list'),
 ]

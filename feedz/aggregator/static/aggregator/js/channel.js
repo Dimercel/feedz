@@ -21,7 +21,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: window.location.href + "/favorite",
+            url: window.location.href + "favorite/",
             data: {post_id: $(this).attr("post_id")},
             success: function(msg) {
                 if (msg == 'added') {

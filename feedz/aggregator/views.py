@@ -6,12 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
 from .feed import sync_feed
 from .forms import CreateChannelForm, UpdateChannelForm
-from .models import Category, Channel
+from .models import Category, Channel, Favorite, Post
 
 
 def navigation_items(user):
@@ -116,7 +117,27 @@ class ChannelUpdate(UpdateView, LoginRequiredMixin):
     template_name = 'aggregator/channel_update.html'
 
 
+class FavoriteListView(TemplateView, LoginRequiredMixin):
+    model = Favorite
+    template_name = 'aggregator/favorite_list.html'
+
+    def get(self, request):
+        favorites = {}
+        for item in Favorite.objects.order_by('updated_at').all():
+            cat_name = item.category_name
+            if cat_name in favorites:
+                favorites[cat_name].append(item)
+            else:
+                favorites[cat_name] = [item]
+
+        return render(request, self.template_name, {
+            'favorites': favorites,
+            'nav_items': navigation_items(request.user),
+        })
+
+
 @login_required()
+@require_GET
 def all_categories(request):
     nav_items = navigation_items(request.user)
 
@@ -124,3 +145,26 @@ def all_categories(request):
         'cat_info': nav_items,
         'nav_items': nav_items
     })
+
+
+@login_required()
+@require_POST
+def add_favorite(request, channel_id):
+    post_id = request.POST.get('post_id')
+
+    if post_id:
+        post = Post.objects.get(pk=post_id)
+        channel = Channel.objects.select_related().get(pk=channel_id)
+
+        if post:
+            Favorite.objects.create(
+                url=post.url,
+                title=post.title,
+                category_name="{} >> {}".format(channel.category.name,
+                                                channel.name),
+                channel=channel
+            )
+
+            return HttpResponse('added')
+
+    return HttpResponse('error')
