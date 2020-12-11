@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-06 21:07+0300\n"
+"POT-Creation-Date: 2020-12-11 20:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,13 +116,15 @@ msgstr "Новый rss-канал"
 msgid "Update rss channel"
 msgstr "Новый rss-канал"
 
-#: feedz/templates/_main_menu.html:42
-msgid "Add channel"
-msgstr "Добавить rss-канал"
-
+#: feedz/aggregator/templates/aggregator/favorite_list.html:6
+#: feedz/aggregator/templates/aggregator/favorite_list.html:8
 #: feedz/templates/_main_menu.html:45
 msgid "Favorite"
 msgstr "Избранное"
+
+#: feedz/templates/_main_menu.html:42
+msgid "Add channel"
+msgstr "Добавить rss-канал"
 
 #: feedz/templates/_main_menu.html:48
 msgid "Change categories"

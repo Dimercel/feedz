@@ -42,7 +42,7 @@
     <a href="{% url 'channel-new' %}" title="{% trans 'Add channel' %}">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
-    <a href="<%= favorites_path %>" title="{% trans 'Favorite' %}">
+    <a href="{% url 'favorite-list' %}" title="{% trans 'Favorite' %}">
       <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
     </a>
     <a href="{% url 'category-list' %}" title="{% trans 'Change categories' %}">
