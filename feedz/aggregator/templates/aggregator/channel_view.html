@@ -7,7 +7,7 @@
 <script src="{% static 'aggregator/js/channel.js' %}"></script>
 {% endblock %}
 
-{% block title %}{{ channel.name }}{% endblock title %}
+{% block title %}{{ channel.category.name }} > {{ channel.name }}{% endblock title %}
 
 {% block content %}
 
