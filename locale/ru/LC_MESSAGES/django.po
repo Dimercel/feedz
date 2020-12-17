@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-11 20:46+0300\n"
+"POT-Creation-Date: 2020-12-17 21:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,20 @@ msgstr "Обновить категорию"
 #: feedz/aggregator/templates/aggregator/channel_update.html:25
 msgid "Update"
 msgstr "Изменить"
+
+#: feedz/aggregator/templates/aggregator/channel_confirm_delete.html:6
+#: feedz/aggregator/templates/aggregator/channel_confirm_delete.html:14
+msgid "Delete channel"
+msgstr "Удалить rss-канал"
+
+#: feedz/aggregator/templates/aggregator/channel_confirm_delete.html:24
+msgid "Are you sure you want to delete channel"
+msgstr "Вы уверены что хотите удалить rss-канал"
+
+#: feedz/aggregator/templates/aggregator/channel_confirm_delete.html:28
+#: feedz/templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr "Подтвердить"
 
 #: feedz/aggregator/templates/aggregator/channel_new.html:6
 #: feedz/aggregator/templates/aggregator/channel_new.html:14
@@ -211,10 +225,6 @@ msgstr ""
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
-msgstr ""
-
-#: feedz/templates/account/email_confirm.html:20
-msgid "Confirm"
 msgstr ""
 
 #: feedz/templates/account/email_confirm.html:27

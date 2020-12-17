@@ -3,12 +3,13 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .feed import sync_feed
 from .forms import CreateChannelForm, UpdateChannelForm
@@ -84,7 +85,7 @@ class ChannelView(TemplateView, LoginRequiredMixin):
     model = Channel
     template_name = 'aggregator/channel_view.html'
 
-    def get(self, request, pk, *args, **kwargs):
+    def get(self, request, pk):
         model = get_object_or_404(Channel, pk=pk)
         sync_date = model.last_sync
         if datetime.now(timezone.utc) - sync_date > settings.MIN_SYNC_TIME_DELTA:
@@ -96,7 +97,7 @@ class ChannelView(TemplateView, LoginRequiredMixin):
             'posts': model.never_seen_posts().order_by('-published')[:model.post_limit]
         })
 
-    def post(self, request, pk, *args, **kwargs):
+    def post(self, request, pk):
         if 'date' in request.POST:
             model = get_object_or_404(Channel, pk=pk)
 
@@ -115,6 +116,23 @@ class ChannelUpdate(UpdateView, LoginRequiredMixin):
     model = Channel
     form_class = UpdateChannelForm
     template_name = 'aggregator/channel_update.html'
+
+
+class ChannelDelete(DeleteView, LoginRequiredMixin):
+    model = Channel
+    success_url = reverse_lazy('home')
+
+    def post(self, request, pk, *args, **kwargs):
+        own_categories = request.user.category_set.values('id')
+
+        # Удаляемый канал должен принадлежать пользователю
+        if pk in list(Channel.objects
+                      .filter(category_id__in=own_categories)
+                      .values_list('id', flat=True)):
+
+            return super().post(request, pk, *args, **kwargs)
+
+        return HttpResponseRedirect(self.success_url)
 
 
 class FavoriteListView(TemplateView, LoginRequiredMixin):

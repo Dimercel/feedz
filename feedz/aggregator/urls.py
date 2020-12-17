@@ -32,6 +32,10 @@ urlpatterns = [
          login_required(views.ChannelUpdate.as_view()),
          name='channel-update'),
 
+    path('channel/<int:pk>/delete/',
+         login_required(views.ChannelDelete.as_view()),
+         name='channel-delete'),
+
     path('favorite/',
          login_required(views.FavoriteListView.as_view()),
          name='favorite-list'),

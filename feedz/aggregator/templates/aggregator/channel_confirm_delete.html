@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% trans "New category" %}{% endblock %}
+{% block title %}{% trans 'Delete channel' %}{% endblock title %}
 
 {% block content %}
 <div class="row">
@@ -11,21 +11,25 @@
     <div class="form-container">
       <div class="x_panel">
         <div class="x_title">
-          <h1>{% trans "New category" %}</h1>
+          <h1>{% trans 'Delete channel' %}</h1>
           <div class="clearfix"></div>
         </div>
 
         <div class="x_content ">
-
           <form class="form-horizontal form-label-left" method="POST">
             {% csrf_token %}
             {{ form|crispy }}
+
+            <h4>
+              {% trans 'Are you sure you want to delete channel' %} "{{ object.name }}"?
+            </h4>
             <div class="ln_solid"></div>
 
-            <input class="btn btn-primary" type="submit" value="{% trans 'Create' %}">
-          </form>
+            <input class="btn btn-primary" type="submit" value="{% trans 'Confirm' %}">
 
+          </form>
         </div>
+
       </div>
     </div>
   </div>
