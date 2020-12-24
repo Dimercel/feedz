@@ -27,7 +27,7 @@
           {% for item in models %}
             <div class="row item">
               <div class="col-md-10">
-                <span class="glyphicon glyphicon-remove remove"></span>
+                <a href="{% url 'favorite-delete' item.pk %}"><span class="glyphicon glyphicon-remove remove"></span></a>
                 <a class="title" href="{{ item.url }}" target="_blank">
                   {{ item.title|truncatechars:150 }}
                 </a>

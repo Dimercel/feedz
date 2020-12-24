@@ -39,4 +39,8 @@ urlpatterns = [
     path('favorite/',
          login_required(views.FavoriteListView.as_view()),
          name='favorite-list'),
+
+    path('favorite/<int:pk>/delete/',
+         login_required(views.FavoriteDelete.as_view()),
+         name='favorite-delete'),
 ]

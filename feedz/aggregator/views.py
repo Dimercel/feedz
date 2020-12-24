@@ -154,6 +154,11 @@ class FavoriteListView(TemplateView, LoginRequiredMixin):
         })
 
 
+class FavoriteDelete(DeleteView, LoginRequiredMixin):
+    model = Favorite
+    success_url = reverse_lazy('favorite-list')
+
+
 @login_required()
 @require_GET
 def all_categories(request):
